@@ -245,6 +245,23 @@
 	</div>
   <div class='sectionLine'></div>
 	{{/if}}
+  
+  {{#if resume.projects.length}}
+	<div id='projects' class="sectionBlock">
+    <div class='sectionName'>
+      <span>PROJECTS</span>
+    </div>
+    <div class='sectionContent'>
+      {{#each resume.projects}}
+      <div class='projectsBlock'>
+        <span class='title'>{{#if name}}{{name}}{{/if}}</span>
+        
+      </div>
+      {{/each}}
+    </div>
+	</div>
+  <div class='sectionLine'></div>
+	{{/if}}
 
 	{{#if resume.skills.length}}
 	<div id='skills' class="sectionBlock">
