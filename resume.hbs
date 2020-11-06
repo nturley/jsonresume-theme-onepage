@@ -255,7 +255,16 @@
       {{#each resume.projects}}
       <div class='projectsBlock'>
         <span class='title'>{{#if name}}{{name}}{{/if}}</span>
-        
+        {{#if url}}<a class="projectUrl" href="{{url}}">({{url}})</a>{{/if}}
+        {{#if highlights.length}}
+        <div id='highlightsBlock'>
+          <ul class='highlightsList'>
+            {{#each highlights}}
+            <li class='highlight'>{{.}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        {{/if}}
       </div>
       {{/each}}
     </div>
