@@ -46,6 +46,7 @@ a {
 
 .sectionBlock {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -138,6 +139,9 @@ a {
   }
   .smallFont {
     font-size: 14px;
+  }
+  .sectionName {
+    width: 100%;
   }
 }
 
