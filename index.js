@@ -50,6 +50,38 @@ function render(resume) {
     }
   });
 
+  // Group consecutive work entries at the same company into one block.
+  // A group with several entries lists each position as a role line under
+  // the company name, and shows the combined highlights in entry order.
+  if (validateArray(resume.work)) {
+    var grouped = [];
+    resume.work.forEach(function(block) {
+      var prev = grouped[grouped.length - 1];
+      if (prev && block.company && prev.company === block.company) {
+        prev.roles.push(block);
+        prev.startDate = block.startDate;
+        prev.highlights = prev.highlights.concat(block.highlights);
+      } else {
+        grouped.push({
+          company: block.company,
+          website: block.website,
+          startDate: block.startDate,
+          endDate: block.endDate,
+          highlights: block.highlights.slice(),
+          details: block.details,
+          roles: [block]
+        });
+      }
+    });
+    grouped.forEach(function(group) {
+      if (group.roles.length === 1) {
+        group.position = group.roles[0].position;
+        group.roles = [];
+      }
+    });
+    resume.work = grouped;
+  }
+
 	var css = fs.readFileSync(__dirname + "/style.css", "utf-8");
 	var tpl = fs.readFileSync(__dirname + "/resume.hbs", "utf-8");
 	return Handlebars.compile(tpl)({

@@ -86,6 +86,13 @@
 	        </span>
 	        {{/if}}
 	      </div>
+	      {{#if roles.length}}
+	      <div class='roles'>
+	        {{#each roles}}
+	        <div class='role'><span>{{position}}</span><span class='date'>{{startDate}} &mdash; {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span></div>
+	        {{/each}}
+	      </div>
+	      {{/if}}
 	      <div><a href='{{website}}'>{{website}}</a></div>
 	      {{#if highlights.length}}
 	      <ul class='highlights'>
